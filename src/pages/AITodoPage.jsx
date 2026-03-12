@@ -112,10 +112,7 @@ export default function AITodoPage() {
   };
 
   const examplePrompts = [
-    'Buatkan saya todo Ramadhan hari ini',
-    'Buatkan todo ibadah untuk siswa',
-    'Buatkan todo jualan takjil',
-    'Buatkan rutinitas sahur sehat',
+    'Buatkan saya todo'
   ];
 
   return (
