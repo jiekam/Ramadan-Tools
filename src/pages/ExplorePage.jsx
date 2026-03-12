@@ -65,6 +65,7 @@ export default function ExplorePage() {
       try {
         // Fetch dari backend internal kita sendiri untuk menghindari CORS / Limit proxy gratis
         const API_BASE = import.meta.env.VITE_API_URL || '';
+        console.log('[debug] Fetching news from:', `${API_BASE}/api/news`);
         const response = await fetch(`${API_BASE}/api/news`);
         
         if (!response.ok) throw new Error('Network response was not ok');
