@@ -1,7 +1,11 @@
 export async function generateRamadhanTodo(prompt) {
   try {
-    const API_BASE = import.meta.env.VITE_API_URL || '';
-    console.log('[debug] Requesting AI Todo from:', `${API_BASE}/api/ai-todo`);
+    let API_BASE = import.meta.env.VITE_API_URL || '';
+    if (API_BASE && !API_BASE.startsWith('http')) {
+      API_BASE = `https://${API_BASE}`;
+    }
+    API_BASE = API_BASE.replace(/\/$/, '');
+
     const res = await fetch(`${API_BASE}/api/ai-todo`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

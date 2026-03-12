@@ -64,8 +64,12 @@ export default function ExplorePage() {
       setLoadingNews(true);
       try {
         // Fetch dari backend internal kita sendiri untuk menghindari CORS / Limit proxy gratis
-        const API_BASE = import.meta.env.VITE_API_URL || '';
-        console.log('[debug] Fetching news from:', `${API_BASE}/api/news`);
+        let API_BASE = import.meta.env.VITE_API_URL || '';
+        if (API_BASE && !API_BASE.startsWith('http')) {
+          API_BASE = `https://${API_BASE}`;
+        }
+        API_BASE = API_BASE.replace(/\/$/, '');
+        
         const response = await fetch(`${API_BASE}/api/news`);
         
         if (!response.ok) throw new Error('Network response was not ok');
