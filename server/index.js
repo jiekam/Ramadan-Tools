@@ -52,7 +52,11 @@ app.post('/api/ai-todo', async (req, res) => {
         {
           role: 'system',
           content:
-            `Kamu adalah asisten AI yang membuat todo list khusus (Ramadhan diutamakan).`,
+            `Kamu adalah asisten AI untuk membuat todo list Ramadhan.
+            Output HARUS berupa JSON array saja.
+            Contoh:
+            ["Shalat tarawih","Membaca Al-Quran"]
+            Jangan menambahkan penjelasan apapun.`,
         },
         { role: 'user', content: prompt },
       ],
