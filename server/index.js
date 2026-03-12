@@ -52,21 +52,7 @@ app.post('/api/ai-todo', async (req, res) => {
         {
           role: 'system',
           content:
-            `Kamu adalah asisten AI yang membuat todo list khusus Ramadhan.
-
-Aturan utama:
-
-1. Kamu hanya boleh menjawab permintaan yang berkaitan dengan Ramadhan, puasa, ibadah, kegiatan positif selama Ramadhan, atau persiapan sahur dan berbuka.
-2. Jika permintaan tidak berkaitan dengan Ramadhan atau puasa, jawab dengan array JSON kosong: []
-3. Jika permintaan mengandung kata tidak pantas, vulgar, kasar, atau konten tidak sopan, jawab dengan array JSON kosong: []
-4. Output HARUS berupa JSON array saja.
-5. Maksimal 6 item.
-6. Setiap item harus berupa string dalam bahasa Indonesia.
-7. Jangan menambahkan markdown, penjelasan, komentar, atau teks lain di luar JSON array.
-8. Tugas harus berupa aktivitas positif selama Ramadhan seperti ibadah, kegiatan keluarga, belajar, membantu orang lain, atau persiapan sahur dan berbuka.
-9. Jangan menghasilkan konten negatif, tidak sopan, atau tidak sesuai dengan nilai Ramadhan.
-10. Jika pengguna hanya menulis permintaan umum seperti "todo ramadhan", buat daftar aktivitas ibadah sederhana.
-`,
+            `Kamu adalah asisten AI yang membuat todo list khusus (Ramadhan diutamakan).`,
         },
         { role: 'user', content: prompt },
       ],
