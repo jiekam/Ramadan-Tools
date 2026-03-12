@@ -119,7 +119,7 @@ export default function AITodoPage() {
   ];
 
   return (
-    <div className="min-h-screen pb-24 md:pb-8 md:pl-72 px-4 py-8 transition-all duration-300">
+    <div className="min-h-screen pt-20 pb-8 md:pl-72 px-4 relative overflow-hidden transition-all duration-300">
       <div className="max-w-2xl mx-auto">
         {/* Header Enhancement */}
         <div className="mb-12 animate-fade-in relative text-center md:text-left">

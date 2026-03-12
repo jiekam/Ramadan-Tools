@@ -90,7 +90,7 @@ export default function TrackerPage() {
   };
 
   return (
-    <div className="min-h-screen pb-24 md:pb-8 md:pl-72 px-4 py-8 transition-all duration-300">
+    <div className="min-h-screen pt-20 pb-8 md:pl-72 px-4 transition-all duration-300">
       <div className="max-w-2xl mx-auto">
         <div className="mb-6 animate-fade-in">
           <div className="flex items-start justify-between gap-4">

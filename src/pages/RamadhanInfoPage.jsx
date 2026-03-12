@@ -94,7 +94,7 @@ export default function RamadhanInfoPage() {
   };
 
   return (
-    <div className="min-h-screen pb-24 md:pb-8 md:pl-72 px-4 py-8 transition-all duration-300">
+    <div className="min-h-screen pt-20 pb-8 md:pl-72 px-4 transition-all duration-300">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="mb-8 animate-fade-in text-center md:text-left">

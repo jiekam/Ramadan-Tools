@@ -75,7 +75,7 @@ export default function CalendarPage() {
   };
 
   return (
-    <div className="min-h-screen pb-24 md:pb-8 md:pl-72 px-4 py-8 relative overflow-hidden transition-all duration-300">
+    <div className="min-h-screen pt-20 pb-8 md:pl-72 px-4 relative overflow-hidden transition-all duration-300">
       {/* Background Decorative Elements */}
       <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-accent-gold/5 rounded-full blur-[120px] pointer-events-none animate-pulse-slow"></div>
       <div className="absolute bottom-[-10%] left-[-10%] w-[30%] h-[30%] bg-success/5 rounded-full blur-[100px] pointer-events-none"></div>

@@ -20,7 +20,7 @@ export default function DashboardPage() {
   const totalCount = ibadahKeys.length;
 
   return (
-    <div className="min-h-screen pb-28 md:pb-8 md:pl-72 px-4 py-8 relative overflow-hidden transition-all duration-300">
+    <div className="min-h-screen pt-20 pb-8 md:pl-72 px-4 relative overflow-hidden transition-all duration-300">
       {/* Decorative gradient orbs */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-accent-gold/5 rounded-full blur-[80px] pointer-events-none"></div>
       <div className="absolute top-40 left-[-20%] w-72 h-72 bg-success/5 rounded-full blur-[80px] pointer-events-none"></div>
