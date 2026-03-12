@@ -108,45 +108,46 @@ export default function CalendarPage() {
         </div>
 
         {/* Legend - More Modern & Visual */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8 md:mb-10">
           {[
-            { icon: <CheckCircle2 size={20} />, label: 'Lengkap (5-6)', color: 'text-success', bg: 'bg-success/10', border: 'border-success/30' },
-            { icon: <Flame size={20} />, label: 'Bagus (3-4)', color: 'text-warning', bg: 'bg-warning/10', border: 'border-warning/30' },
-            { icon: <Circle size={20} />, label: 'Kurang (1-2)', color: 'text-danger', bg: 'bg-danger/10', border: 'border-danger/30' },
-            { icon: <Circle size={20} />, label: 'Belum Ada', color: 'text-text-primary/30', bg: 'bg-bg-secondary/40', border: 'border-white/5' }
+            { icon: <CheckCircle2 size={18} />, label: 'Lengkap (5-6)', color: 'text-success', bg: 'bg-success/10', border: 'border-success/30' },
+            { icon: <Flame size={18} />, label: 'Bagus (3-4)', color: 'text-warning', bg: 'bg-warning/10', border: 'border-warning/30' },
+            { icon: <Circle size={18} />, label: 'Kurang (1-2)', color: 'text-danger', bg: 'bg-danger/10', border: 'border-danger/30' },
+            { icon: <Circle size={18} />, label: 'Belum Ada', color: 'text-text-primary/30', bg: 'bg-bg-secondary/40', border: 'border-white/5' }
           ].map((item, i) => (
-            <div key={i} className={`flex items-center gap-3 p-4 rounded-2xl border ${item.bg} ${item.border} backdrop-blur-sm transition-all hover:scale-[1.02]`}>
+            <div key={i} className={`flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-2xl border ${item.bg} ${item.border} backdrop-blur-sm transition-all hover:scale-[1.02]`}>
               <div className={`${item.color} drop-shadow-sm`}>{item.icon}</div>
-              <span className="text-xs font-bold text-text-primary/80 uppercase tracking-wider">{item.label}</span>
+              <span className="text-[10px] md:text-xs font-bold text-text-primary/80 uppercase tracking-wider">{item.label}</span>
             </div>
           ))}
         </div>
 
         {/* Calendar Grid - Refined */}
-        <div className="glass-card rounded-[2.5rem] p-8 md:p-10 border border-accent-gold/20 mb-8 shadow-glass-gold/10">
-          <div className="grid grid-cols-7 gap-3 md:gap-5">
+        <div className="glass-card rounded-3xl md:rounded-[2.5rem] p-4 md:p-10 border border-accent-gold/20 mb-8 shadow-glass-gold/10">
+          <div className="grid grid-cols-7 gap-1.5 md:gap-5">
             {['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'].map((d) => (
-              <div key={d} className="text-center text-xs md:text-sm font-black text-text-secondary/50 uppercase tracking-[0.2em] mb-4">{d}</div>
+              <div key={d} className="text-center text-[10px] md:text-sm font-black text-text-secondary/50 uppercase tracking-widest mb-2 md:mb-4">{d}</div>
             ))}
             {calendar.map((day) => (
               <button
                 key={day.date}
                 onClick={() => setSelectedDay(day)}
-                className={`aspect-square rounded-2xl md:rounded-[1.5rem] border-2 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl active:scale-[0.9] group relative overflow-hidden ${getDayStyle(
+                className={`aspect-square rounded-xl md:rounded-[1.5rem] border md:border-2 transition-all duration-300 hover:-translate-y-1 md:hover:-translate-y-2 hover:shadow-xl active:scale-[0.95] group relative overflow-hidden ${getDayStyle(
                   day.completed
-                )} ${isToday(day) ? 'ring-4 ring-accent-gold/30 ring-offset-4 ring-offset-bg-primary shadow-glow-gold' : ''}`}
+                )} ${isToday(day) ? 'ring-2 md:ring-4 ring-accent-gold/30 ring-offset-2 md:ring-offset-4 ring-offset-bg-primary shadow-glow-gold' : ''}`}
               >
-                <div className="flex flex-col items-center justify-center h-full relative z-10">
-                  <div className={`text-sm md:text-xl font-black mb-1 transition-colors ${isToday(day) ? 'text-accent-gold' : 'text-text-primary/90'}`}>
+                <div className="flex flex-col items-center justify-center h-full relative z-10 p-0.5">
+                  <div className={`text-sm md:text-xl font-black mb-0.5 transition-colors ${isToday(day) ? 'text-accent-gold' : 'text-text-primary/90'}`}>
                     {day.day}
                   </div>
-                  <div className="mb-2 scale-75 md:scale-100 transition-transform group-hover:scale-110">{getDayIcon(day.completed)}</div>
-                  <div className={`text-[8px] md:text-xs font-bold px-2 py-0.5 rounded-full ${day.completed > 0 ? 'bg-black/10' : 'text-text-secondary/40'}`}>
+                  {/* Icons only on desktop */}
+                  <div className="hidden md:block mb-2 scale-75 md:scale-100 transition-transform group-hover:scale-110">{getDayIcon(day.completed)}</div>
+                  <div className={`text-[8px] md:text-xs font-bold px-1.5 md:px-2 py-0.5 rounded-full ${day.completed > 0 ? 'bg-black/10' : 'text-text-secondary/40'}`}>
                     {day.completed}/6
                   </div>
                 </div>
                 {isToday(day) && (
-                  <div className="absolute top-1 right-1 md:top-2 md:right-2 w-2 h-2 bg-accent-gold rounded-full animate-ping"></div>
+                  <div className="absolute top-0.5 right-0.5 md:top-2 md:right-2 w-1 h-1 md:w-2 md:h-2 bg-accent-gold rounded-full animate-ping"></div>
                 )}
               </button>
             ))}
