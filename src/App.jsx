@@ -11,6 +11,8 @@ import TrackerPage from './pages/TrackerPage';
 import ExplorePage from './pages/ExplorePage';
 import RamadhanInfoPage from './pages/RamadhanInfoPage';
 
+import { useServerHealth } from './hooks/useServerHealth';
+
 function ProtectedRoute({ children }) {
   const data = getData();
   if (!data.setupComplete) {
@@ -20,6 +22,9 @@ function ProtectedRoute({ children }) {
 }
 
 function App() {
+  // Wake up server on mount
+  useServerHealth();
+
   return (
     <Router
       future={{

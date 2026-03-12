@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import BottomNav from '../components/BottomNav';
-import { Globe, MapPin, Clock, Newspaper, ChevronRight, RefreshCw, AlertCircle } from 'lucide-react';
+import { Globe, MapPin, Clock, Newspaper, ChevronRight, RefreshCw, AlertCircle, Sparkles } from 'lucide-react';
+import { useServerHealth } from '../hooks/useServerHealth';
 
 const CITIES = [
   { name: 'Makkah', country: 'Saudi Arabia', timezone: 'Asia/Riyadh' },
@@ -27,6 +28,7 @@ export default function ExplorePage() {
   const [news, setNews] = useState([]);
   const [loadingNews, setLoadingNews] = useState(true);
   const [randomFact, setRandomFact] = useState('');
+  const { isWakingUp, secondsElapsed } = useServerHealth();
 
   // Fetch Prayer Times
   useEffect(() => {
@@ -236,7 +238,16 @@ export default function ExplorePage() {
                     </div>
                  ))}
                </div>
-            ) : news.length > 0 ? (
+            ) : isWakingUp ? (
+                <div className="glass-card p-8 rounded-2xl border border-accent-gold/20 text-center animate-pulse">
+                   <div className="relative w-12 h-12 mx-auto mb-4">
+                      <RefreshCw className="animate-spin text-accent-gold" size={32} />
+                      <Sparkles className="absolute -top-1 -right-1 text-accent-gold" size={16} />
+                   </div>
+                   <p className="text-sm font-medium text-text-primary">AI sedang bersiap ({secondsElapsed}s)...</p>
+                   <p className="text-[10px] text-text-secondary mt-1 italic">Berita akan muncul saat server sudah bangun.</p>
+                </div>
+              ) : news.length > 0 ? (
               news.map((item, index) => (
                 <a 
                   key={index}

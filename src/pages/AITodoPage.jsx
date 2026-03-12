@@ -11,6 +11,8 @@ import {
   Square,
   Info,
 } from 'lucide-react';
+import { useServerHealth } from '../hooks/useServerHealth';
+import ServerStatusOverlay from '../components/ServerStatusOverlay';
 
 export default function AITodoPage() {
   const navigate = useNavigate();
@@ -19,6 +21,7 @@ export default function AITodoPage() {
   const [todos, setTodos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { isReady, isWakingUp, secondsElapsed } = useServerHealth();
 
   const handleGenerate = async () => {
     if (!prompt.trim()) {
@@ -121,6 +124,9 @@ export default function AITodoPage() {
 
   return (
     <div className="min-h-screen pt-20 pb-8 md:pl-72 px-4 relative overflow-hidden transition-all duration-300">
+      {isWakingUp && loading && (
+        <ServerStatusOverlay secondsElapsed={secondsElapsed} />
+      )}
       <div className="max-w-2xl mx-auto">
         {/* Header Enhancement */}
         <div className="mb-12 animate-fade-in relative text-center md:text-left">
